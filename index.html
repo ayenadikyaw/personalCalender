@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="upper-part"></div>
+      <div class="lower-part"></div>
+
+      <div class="calendar">
+        <div class="header"><h1>PERSONAL CALENDAR</h1></div>
+        
+        <div class="functionsContainer">
+          <select id="year-select" value="2024"></select>
+          <select name="months" id="month-select"></select>
+          <input type="date" id="datetime" name="datetime" />
+          <input type="text" id="textbox" placeholder="select date first">
+          <button id="note" onclick="addNote()">Add Note</button>
+          <button id="listNotes" onclick="showAllNotes()">All Notes</button>
+          <button id="clear" onclick="clearNotes()">Clear</button>
+        </div>
+
+        <hr />
+        <div class="bottom-container">
+            
+            <div class="calender-items">
+                <div class="day-header-container">
+                    <div class="day-header sunday">SUN</div>
+                    <div class="day-header">MON</div>
+                    <div class="day-header">TUES</div>
+                    <div class="day-header">WED</div>
+                    <div class="day-header">THU</div>
+                    <div class="day-header">FRI</div>
+                    <div class="day-header saturday">SAT</div>
+                </div>
+                <div class="week-container">
+                    <div class="day"> </div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                <div class="week-container">
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                <div class="week-container">
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                <div class="week-container">
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                <div class="week-container">
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                <div class="week-container">
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                    <div class="day"></div>
+                </div>
+                
+            </div>
+            <div id="notes-items">
+  
+            </div>
+           
+        </div>
+       
+      </div>
+    </div>
+  </body>
+</html>
+
