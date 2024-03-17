@@ -1,4 +1,6 @@
-//
+// global variables
+
+//for default settings
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
 const endYear = 2030;
@@ -21,6 +23,7 @@ const months = [
 var yearSelect = document.getElementById("year-select");
 // get the select month
 var monthSelect = document.getElementById("month-select");
+//to store date and notes
 let DateArr = [];
 let noteArr = [];
 
@@ -89,7 +92,10 @@ function reset() {
     days[index].style.backgroundColor = "";
   }
 }
-// Function to update calendar when year or month changes
+
+/**
+ * Function to update calendar when year or month changes
+ */
 yearSelect.onchange = monthSelect.onchange = function () {
   reset();
   const selectedYear = parseInt(yearSelect.value);
@@ -133,6 +139,9 @@ function monthInNum(monthName) {
   }
 }
 
+/**
+ * To store date and notes when user clicks on add note button
+ */
 function addNote() {
   let dateOfNote = document.getElementById("datetime").value;
 
@@ -153,6 +162,9 @@ function addNote() {
   checkNotes(yearOfNote, monthOfNote);
 }
 
+/**
+ * to reset the note color
+ */
 function clearColor() {
   for (let index = 0; index < 42; index++) {
     days[index].style.backgroundColor = "";
@@ -175,6 +187,11 @@ function showNote(date, note) {
   //showNote(DateArr,noteArr);
 }
 
+/**
+ * if have notes, to show them in the corresponding date
+ * @param {*} year 
+ * @param {*} month 
+ */
 function checkNotes(year, month) {
   console.log(DateArr);
   console.log(noteArr);
@@ -190,6 +207,9 @@ function checkNotes(year, month) {
   }
 }
 
+/**
+ * to show all the notes user created
+ */
 function showAllNotes() {
   console.log("reach show all notes");
   document.getElementById("notes-items").innerHTML ="";
@@ -206,7 +226,9 @@ function showAllNotes() {
   }
 }
 
-
+/**
+ * to clear all notes when click on clear button
+ */
 function clearNotes() {
   document.getElementById("notes-items").innerHTML ="";
 }

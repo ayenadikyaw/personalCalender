@@ -62,12 +62,6 @@ html {
   color: rgba(114, 33, 138, 1);
 }
 
-.leftContainer {
-  margin-top: 15px;
-  float: left;
-  width: 30%;
-}
-
 #year-select,
 #month-select {
   border: none;
@@ -88,6 +82,7 @@ html {
   overflow: auto;
 }
 
+/* to add note, to choose date and write notes */
 #datetime,
 #textbox {
   margin-right: 10px;
@@ -100,6 +95,7 @@ hr {
   color: rgba(128, 128, 128, 0.658);
 }
 
+/*3 buttons design */
 #note,
 #listNotes,
 #clear {
@@ -137,6 +133,7 @@ hr {
   overflow: auto;
 }
 
+/*Style for notes*/
 #notes-items p {
   margin-left: 15px;
   font-size: 1vw;
@@ -157,6 +154,7 @@ hr {
   font-size: 1vw;
 }
 
+/* Days boxes */
 .day-header,
 .day {
   border: 1px solid transparent;
@@ -177,6 +175,7 @@ hr {
   background-color: rgb(229, 101, 229);
 }
 
+/* font size for notes in days */
 .day div{
   font-size: 0.5vw;
 }
