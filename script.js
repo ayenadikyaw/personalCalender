@@ -4,7 +4,9 @@
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth() + 1;
 const endYear = 2030;
+const startYear = 1950;
 let days = document.getElementsByClassName("day");
+
 const months = [
   "January",
   "February",
@@ -42,7 +44,7 @@ function generateYearOptions() {
   yearSelect.innerHTML = "";
 
   // Generate years from 1500 to 2030 year
-  for (var year = 1950; year <= endYear; year++) {
+  for (var year = startYear; year <= endYear; year++) {
     var option = document.createElement("option");
     option.text = year;
     option.value = year;
@@ -74,6 +76,7 @@ function calendar(year, month) {
   //startDate
   let startDate = new Date(year, month - 1, 1).getDay();
   console.log(startDate);
+  //end date
   let endDate = new Date(year, month, 0).getDate();
   console.log(endDate);
   let countDate = 1;
@@ -143,12 +146,15 @@ function monthInNum(monthName) {
  * To store date and notes when user clicks on add note button
  */
 function addNote() {
+  
   let dateOfNote = document.getElementById("datetime").value;
-
+  let note = document.getElementById("textbox").value;
+  if (dateOfNote == "" || note == "") {
+    alert("Please select a date and add a note");
+    return;
+  }
   let datedNote = new Date(dateOfNote);
   DateArr.push(datedNote);
-
-  let note = document.getElementById("textbox").value;
   noteArr.push(note);
 
   yearOfNote = datedNote.getFullYear();
@@ -159,7 +165,7 @@ function addNote() {
   reset();
   calendar(parseInt(yearSelect.value), monthInNum(monthSelect.value));
   clearColor();
-  checkNotes(yearOfNote, monthOfNote);
+  showNotes(yearOfNote, monthOfNote);
 }
 
 /**
@@ -176,15 +182,38 @@ function clearColor() {
  * @param {*} date
  * @param {*} note
  */
-function showNote(date, note) {
-  console.log(date, note);
+function displayNote(date,note) {
+  
   var startDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
   var index = date.getDate() + startDay - 1;
   //console.log(index);
+  if(checkAlreadyInNotes(date)==0){
+    
+    days[index].innerHTML += "<div>" + note + "</div>";
+    
+  }
+  else{
+    days[index].innerHTML = "<div>"+ date.getDate()+"</div>" + "<div>" + note + "</div>" + "<div>"+"+"+checkAlreadyInNotes(date)+"</div>";
+  }
 
-  days[index].innerHTML += "<div>" + note + "</div>";
   days[index].style.backgroundColor = "thistle";
   //showNote(DateArr,noteArr);
+}
+
+/**
+ * to check if the date and note already in the array
+ * @param {*} date 
+ * @param {*} note 
+ */
+function checkAlreadyInNotes(date){
+  let sameNoteCount = -1;
+  for (let index = 0; index < DateArr.length; index++) {
+    if(DateArr[index].getFullYear() == date.getFullYear() && DateArr[index].getMonth() == date.getMonth() && DateArr[index].getDate() == date.getDate()){
+      console.log(sameNoteCount);
+      sameNoteCount++;  
+    }
+  }
+  return sameNoteCount;
 }
 
 /**
@@ -192,9 +221,7 @@ function showNote(date, note) {
  * @param {*} year 
  * @param {*} month 
  */
-function checkNotes(year, month) {
-  console.log(DateArr);
-  console.log(noteArr);
+function showNotes(year, month) {
   console.log(year, month);
   for (let index = 0; index < DateArr.length; index++) {
     console.log(DateArr[index].getMonth());
@@ -202,7 +229,7 @@ function checkNotes(year, month) {
       DateArr[index].getFullYear() == year &&
       DateArr[index].getMonth() == month
     ) {
-      showNote(DateArr[index], noteArr[index]);
+      displayNote(DateArr[index], noteArr[index]);
     }
   }
 }
