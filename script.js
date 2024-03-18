@@ -105,7 +105,7 @@ yearSelect.onchange = monthSelect.onchange = function () {
   const selectedMonth = monthInNum(monthSelect.value);
   calendar(selectedYear, selectedMonth);
 
-  checkNotes(selectedYear, selectedMonth - 1);
+  showNotes(selectedYear, selectedMonth - 1);
 };
 
 /**
@@ -206,7 +206,7 @@ function displayNote(date,note) {
  * @param {*} note 
  */
 function checkAlreadyInNotes(date){
-  let sameNoteCount = -1;
+  let sameNoteCount = -1;// -1 is because push to array before calling the function that's why
   for (let index = 0; index < DateArr.length; index++) {
     if(DateArr[index].getFullYear() == date.getFullYear() && DateArr[index].getMonth() == date.getMonth() && DateArr[index].getDate() == date.getDate()){
       console.log(sameNoteCount);
